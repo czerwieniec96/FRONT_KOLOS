@@ -1,0 +1,43 @@
+
+<div *ngIf="isLoggedIn; else loggedOut">
+
+</div>
+
+<div class="row">
+  <div class="col s12 5">
+          <div class="card indigo lighten-5">
+<ng-template #loggedOut>
+  <div class="row col-sm-6" style="max-width:350px;">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="username">Email</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+          required />
+        <div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors.required">Nie podałeś maila </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+          required minlength="6" />
+        <div *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Nie podałeś hasła</div>
+          <div *ngIf="password.errors.minlength">???</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Zaloguj</button>
+        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+          Nie udało się zalogować: {{errorMessage}}
+        </div>
+      </div>
+      <p>Nie masz konta</p>
+      <a href="signup" class="btn btn-success">Rejestracja</a>
+    </form>
+    <hr />
+  </div>
+</ng-template>
+    </div>
+  </div>
+</div>

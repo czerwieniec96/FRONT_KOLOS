@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "question": "What is the capital of Belgium?",
+      "a": "Vienna",
+      "b": "Berlin",
+      "c": "Brussels",
+      "d": "Prague",
+      "answer": "c"
+    },
+    {
+      "question": "312",
+      "a": "333",
+      "b": "333",
+      "c": "333",
+      "d": "333",
+      "answer": "a",
+      "id": 2
+    },
+    {
+      "question": "123",
+      "a": "12312",
+      "b": "12312",
+      "c": "12312",
+      "d": "3112",
+      "answer": "a",
+      "id": 3
+    },
+    {
+      "question": "12312",
+      "a": "123123",
+      "b": "3333",
+      "c": "3333",
+      "d": "333",
+      "answer": "b",
+      "id": 4
+    },
+    {
+      "question": "233",
+      "a": "222",
+      "b": "333",
+      "c": "333",
+      "d": "333",
+      "answer": "a",
+      "id": 5
+    }
+  ],
+  "comments": [
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

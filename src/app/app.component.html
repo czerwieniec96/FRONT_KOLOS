@@ -1,0 +1,29 @@
+<nav class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <strong><a class="navbar-brand" href="#">QUIZ</a></strong>
+
+      <ul class="nav" routerLinkActive="active">
+        <li class="nav-item"><a class="nav-link" routerLink="home">Informacje</a></li>
+        <li *ngIf="authority === 'user'" class="nav-item">
+          <a class="nav-link" routerLink="user">Quiz</a>
+        </li>
+        <li *ngIf="authority === 'admin'" class="nav-item">
+          <a class="nav-link" routerLink="admin">Panel admina</a>
+        </li>
+        <li *ngIf="authority === 'pm'" class="nav-item">
+          <a class="nav-link" routerLink="pm">PM </a>
+        </li>
+        <li *ngIf="!authority" class="nav-item">
+          <a class="nav-link" routerLink="auth/login">Zaloguj</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+

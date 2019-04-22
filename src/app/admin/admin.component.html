@@ -1,0 +1,102 @@
+<h4> Informacje z serwera</h4>
+
+{{board}}
+{{errorMessage}}
+
+<app-quiz></app-quiz>
+
+
+<table class="table">
+
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Imie</th>
+    <th scope="col">Email</th>
+    <th scope="col">Wynik</th>
+    <th scope="col">Rola</th>
+    <th scope="col">Akcja</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let u of users" >
+    <th scope="row"></th>
+    <td>{{u.name}}</td>
+    <td>{{u.email}}</td>
+    <td>100%</td>
+    <td>xd</td>
+    <td>
+      <button title="Usuń użytkownika" data-toggle="modal" data-target="#myModal2"><i class="material-icons">delete</i></button>
+      <button title="Zmień rolę" data-toggle="modal" data-target="#myModal"><i class="material-icons">insert_emoticon</i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Zmiana roli użytkownika</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+
+        <h6> Wybierz rolę:</h6>
+        <select>
+          <option>ADMIN</option>
+          <option>PM</option>
+          <option>USER</option>
+        </select>
+        <h6>Potwierdź:</h6>
+        <button>Zatwierdź</button>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Usuń użytkownika</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Mdal body -->
+      <div class="modal-body">
+        CZY NA PEWNO CHCESZ USUNĄć użytkownika: ?
+
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal">Nie</button>
+        <button type="button" data-dismiss="modal">Tak</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+dodoać set tmp user i po wyłączeniu midala clerować go;
+
+user to u user czysty to  new user po prostu.
+
+
+dodać usuwanie i zmiane roli!!! a u usera dodać reset hasła w modalu    nic ciekawego xddd
+
+
+
