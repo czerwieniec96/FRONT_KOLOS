@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import {SignUpInfo} from '../auth/signup-info';
 import {UserModel} from '../model/UserModel';
 import {EmailJson} from '../model/emailJson';
+import {Roles} from '../model/Role';
 
 @Component({
   selector: 'app-admin',
@@ -14,6 +15,10 @@ export class AdminComponent implements OnInit {
   errorMessage: string;
   users: UserModel[];
   hideChangeRoleOption :boolean;
+  selectedUser: UserModel = new UserModel();
+  ChangeRoleUser: UserModel = new UserModel();
+  roleToChange: string = "ROLE_USER";
+
   constructor(private userService: UserService) {
   }
 
@@ -30,12 +35,11 @@ export class AdminComponent implements OnInit {
       console.log(this.users);
     });
     this.hideChangeRoleOption = true;
+    console.log("USER WYBRANY");
+    console.log(this.selectedUser);
   }
 
   deleteUser(emial: string) {
-    console.log(emial);
-    let xd: any = new EmailJson(emial);
-    console.log(xd);
     this.userService.deleteUser(emial).subscribe(r => {
       console.log('usunięto');
     });
@@ -50,4 +54,17 @@ export class AdminComponent implements OnInit {
       this.hideChangeRoleOption  = true;
     }
   }
+
+  selectUser1(u: UserModel) {
+    this.selectedUser = u;
+  }
+
+
+
+  // changeRole() {
+  //   this.ChangeRoleUser = this.selectedUser;
+  //   this.ChangeRoleUser.roles = this.roleToChange;
+  //   console.log(this.ChangeRoleUser);
+  //   this.userService.changeRole(this.ChangeRoleUser).subscribe(r=>{console.log(this.ChangeRoleUser});
+  // }
 }

@@ -23,18 +23,20 @@
     <th scope="row"></th>
     <td>{{u.name}}</td>
     <td>{{u.email}}</td>
-    <td>100%</td>
-    <td>xd</td>
+    <td>{{u.userResult}}%</td>
     <td>
-      <button title="Usuń użytkownika" data-toggle="modal" data-target="#myModal2"><i class="material-icons">delete</i></button>
-      <button title="Zmień rolę" data-toggle="modal" data-target="#myModal"><i class="material-icons">insert_emoticon</i>
+          <div *ngFor="let r of u.roles"> {{r.name}} </div>
+    </td>
+    <td>
+      <button title="Usuń użytkownika" data-toggle="modal" data-target="#myModal2" (click)="selectUser1(u)" ><i class="material-icons" >delete</i></button>
+      <button title="Zmień rolę" data-toggle="modal" data-target="#myModal" (click)="selectUser1(u)" ><i class="material-icons">insert_emoticon</i>
       </button>
     </td>
   </tr>
   </tbody>
 </table>
 
-<!-- The Modal -->
+<!-- The Modal  zmiana roli-->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -49,23 +51,23 @@
       <div class="modal-body">
 
 
-        <h6> Wybierz rolę:</h6>
-        <select>
-          <option>ADMIN</option>
-          <option>PM</option>
-          <option>USER</option>
+        <h6> Wybierz rolę użytkownika: {{selectedUser.name}}</h6>
+        <select class="custom-select custom-select-lg sm" [(ngModel)]="roleToChange">
+          <option valuse="ROLE_ADMIN">ADMIN</option>
+          <option valuse="ROLE_PM">PM</option>
+          <option valuse="ROLE_USER">USER</option>
         </select>
-        <h6>Potwierdź:</h6>
-        <button>Zatwierdź</button>
-      </div>
+
       <!-- Modal footer -->
-      <div class="modal-footer">
+        <div class="modal-footer">
+          <button (click)="changeRole()">Zatwierdź</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- The Modal -->
+<!-- The Modal usuwanko xd-->
 <div class="modal" id="myModal2">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -77,13 +79,13 @@
       </div>
       <!-- Mdal body -->
       <div class="modal-body">
-        CZY NA PEWNO CHCESZ USUNĄć użytkownika: ?
+        CZY NA PEWNO CHCESZ USUNĄć użytkownika: {{selectedUser.name}}?
 
       </div>
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" data-dismiss="modal">Nie</button>
-        <button type="button" data-dismiss="modal">Tak</button>
+        <button type="button" data-dismiss="modal" (click)="deleteUser(selectedUser.email)">Tak</button>
       </div>
 
     </div>
@@ -91,12 +93,7 @@
 </div>
 
 
-dodoać set tmp user i po wyłączeniu midala clerować go;
 
-user to u user czysty to  new user po prostu.
-
-
-dodać usuwanie i zmiane roli!!! a u usera dodać reset hasła w modalu    nic ciekawego xddd
 
 
 

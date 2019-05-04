@@ -7,6 +7,7 @@ import { TokenStorageService } from '../auth/token-storage.service';
 import {SignUpInfo} from '../auth/signup-info';
 import {UserClass} from '../auth/UserClass';
 import {delay} from 'q';
+import {UserService} from '../services/user.service';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -25,12 +26,12 @@ export class QuizComponent implements OnInit {
   token1: any;
   xd: QuestionClass = new QuestionClass();
   @ViewChild('submitModal') submitModal: ModalDirective;
-  @ViewChild('addQuestionModal') addQuestionModal : ModalDirective;
+  @ViewChild('addQuestionModal') addQuestionModal: ModalDirective;
   @ViewChild('answerModal') answerModal: ModalDirective;
   @ViewChild('questionForm') questionForm: any;
   @ViewChild('questionTest') questionTest: any;
 
-  constructor( private toastr: ToastrService, private serv: QuizService, private token: TokenStorageService) { }
+  constructor( private toastr: ToastrService, private serv: QuizService, private token: TokenStorageService, private serviceUser: UserService) { }
 
 
 
@@ -47,6 +48,11 @@ export class QuizComponent implements OnInit {
     }
       this.submitModal.show();
     }
+    console.log(this.info.username);
+    console.log(this.rightAnswer / this.allQuestions.length);
+
+    this.updateScore(this.info.username, (this.rightAnswer / this.allQuestions.length));
+
   }
 
   startQuiz() {
@@ -76,7 +82,7 @@ export class QuizComponent implements OnInit {
       data => {
         console.log(quesTemp);
       });
-   // window.location.reload();
+
   }
   checkAnswers(){
     this.submitModal.hide();
@@ -109,6 +115,10 @@ export class QuizComponent implements OnInit {
   reload(){
     delay(1000);
     window.location.reload();
+  }
+
+  updateScore(mail: string, score: number) {
+        return this.serviceUser.updateScore(mail, score).subscribe(r => {console.log("Udało się")});
   }
 
 
