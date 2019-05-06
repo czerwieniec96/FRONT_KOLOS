@@ -63,6 +63,7 @@ export class UserService {
 
   changeRole(user: UserClass): Observable<any>
   {
+    console.log(user);
     return this.http.put(this.apiRole, user);
   }
 

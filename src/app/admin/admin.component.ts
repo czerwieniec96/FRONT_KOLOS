@@ -46,12 +46,11 @@ export class AdminComponent implements OnInit {
     });
     window.location.reload();
   }
-
-  istrue(){
+  istrue() {
     if(this.hideChangeRoleOption == true){
       this.hideChangeRoleOption  = false;
     }
-    else{
+    else {
       this.hideChangeRoleOption  = true;
     }
   }
@@ -62,10 +61,8 @@ export class AdminComponent implements OnInit {
   }
 
   changeRole() {
-    this.ChangeRoleUser = this.selectedUser;
-    this.ChangeRoleUser.roles = new Roles(this.roleToChange);
-    console.log(this.ChangeRoleUser);
-    console.log(this.roleToChange);
-   this.userService.changeRole(this.ChangeRoleUser).subscribe(r=>{console.log(this.ChangeRoleUser});
+    this.selectedUser.roles[0].name = this.roleToChange;
+    this.userService.changeRole(this.selectedUser).subscribe(r=>{console.log("zmieniono role")});
+    window.location.reload();
   }
 }
