@@ -62,7 +62,7 @@ export class AdminComponent implements OnInit {
 
   changeRole() {
     this.selectedUser.roles[0].name = this.roleToChange;
-    this.userService.changeRole(this.selectedUser).subscribe(r=>{console.log("zmieniono role")});
+    this.userService.changeRole(this.selectedUser).subscribe(r=> {console.log("zmieniono role")});
     window.location.reload();
   }
 }
