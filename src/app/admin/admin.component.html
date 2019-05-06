@@ -25,7 +25,7 @@
     <td>{{u.email}}</td>
     <td>{{u.userResult}}%</td>
     <td>
-          <div *ngFor="let r of u.roles"> {{r.name}} </div>
+        <div *ngFor="let r of u.roles"> {{r.name}}</div>
     </td>
     <td>
       <button title="Usuń użytkownika" data-toggle="modal" data-target="#myModal2" (click)="selectUser1(u)" ><i class="material-icons" >delete</i></button>
@@ -52,10 +52,10 @@
 
 
         <h6> Wybierz rolę użytkownika: {{selectedUser.name}}</h6>
-        <select class="custom-select custom-select-lg sm" [(ngModel)]="roleToChange">
-          <option valuse="ROLE_ADMIN">ADMIN</option>
-          <option valuse="ROLE_PM">PM</option>
-          <option valuse="ROLE_USER">USER</option>
+        <select class="custom-select custom-select-lg sm" [(ngModel)]="roleToChange" >
+          <option value="ROLE_ADMIN">ADMIN</option>
+          <option value="ROLE_PM">PM</option>
+          <option value="ROLE_USER">USER</option>
         </select>
 
       <!-- Modal footer -->
@@ -85,7 +85,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" data-dismiss="modal">Nie</button>
-        <button type="button" data-dismiss="modal" (click)="deleteUser(selectedUser.email)">Tak</button>
+        <button type="button"  data-dismiss="modal" (click)="deleteUser(selectedUser.userId)">Tak</button>
       </div>
 
     </div>

@@ -12,7 +12,7 @@ export class SignUpInfo {
     this.role = ['user'];
     this.username = '123';
   }
-  constructor1( email: string, role: string) {
+  constructor1( email: string, role: string[]) {
     this.email = email;
     this.role = role;
   }

@@ -1,12 +1,13 @@
 export class ChangePass {
   email: string;
-  oldpass: string;
-  newpass: string;
+  newPassword: string;
+  oldPassword: string;
+
 
   constructor(email: string, oldpass: string , newpass: string)
   {
     this.email = email;
-    this.oldpass = oldpass;
-    this.newpass = newpass;
+    this.oldPassword = oldpass;
+    this.newPassword = newpass;
   }
 }

@@ -14,10 +14,11 @@ export class AdminComponent implements OnInit {
   board: string;
   errorMessage: string;
   users: UserModel[];
-  hideChangeRoleOption :boolean;
+  hideChangeRoleOption: boolean;
   selectedUser: UserModel = new UserModel();
   ChangeRoleUser: UserModel = new UserModel();
-  roleToChange: string = "ROLE_USER";
+  roleToChange: string;
+  deleteEmail: EmailJson;
 
   constructor(private userService: UserService) {
   }
@@ -39,11 +40,11 @@ export class AdminComponent implements OnInit {
     console.log(this.selectedUser);
   }
 
-  deleteUser(emial: string) {
-    this.userService.deleteUser(emial).subscribe(r => {
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe(r => {
       console.log('usunięto');
     });
-    //window.location.reload();
+    window.location.reload();
   }
 
   istrue(){
@@ -57,14 +58,14 @@ export class AdminComponent implements OnInit {
 
   selectUser1(u: UserModel) {
     this.selectedUser = u;
+    console.log(this.selectedUser);
   }
 
-
-
-  // changeRole() {
-  //   this.ChangeRoleUser = this.selectedUser;
-  //   this.ChangeRoleUser.roles = this.roleToChange;
-  //   console.log(this.ChangeRoleUser);
-  //   this.userService.changeRole(this.ChangeRoleUser).subscribe(r=>{console.log(this.ChangeRoleUser});
-  // }
+  changeRole() {
+    this.ChangeRoleUser = this.selectedUser;
+    this.ChangeRoleUser.roles = new Roles(this.roleToChange);
+    console.log(this.ChangeRoleUser);
+    console.log(this.roleToChange);
+   this.userService.changeRole(this.ChangeRoleUser).subscribe(r=>{console.log(this.ChangeRoleUser});
+  }
 }

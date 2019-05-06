@@ -51,7 +51,7 @@ export class QuizComponent implements OnInit {
     console.log(this.info.username);
     console.log(this.rightAnswer / this.allQuestions.length);
 
-    this.updateScore(this.info.username, (this.rightAnswer / this.allQuestions.length));
+    this.updateScore(this.info.username, (this.rightAnswer / this.allQuestions.length)* 100);
 
   }
 
@@ -63,7 +63,6 @@ export class QuizComponent implements OnInit {
     }
     this.questionTest.reset();
     this.isQuestionCardShow = true;
-
   }
   HomePage() {
     this.isQuestionCardShow = false;
